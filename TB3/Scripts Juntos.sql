@@ -247,6 +247,37 @@ CREATE TABLE especies_amenazas(
     FOREIGN KEY (id_especie) REFERENCES especies(id_especie),
     Foreign Key (id_amenaza)references amenazas(id_amenaza)
 );
+--Table: gestion_actualizaciones
+create table gestion_actualizaciones(
+    id int identity (1,1)not null,
+    fecha date not null,
+    descripcion text not null,
+    id_especie int ,
+    id_depredador int,
+    id_ecorregion int,
+    id_ecosistema int,
+    id_habitat int,
+    id_amenazas int,
+    id_ley int,
+    id_proyecto int,
+    id_organizacion int,
+    id_area_protegida int,
+    id_noticia int,
+    id_grafico int,
+    primary key (id),
+    foreign key (id_especie)references especies(id_especie),
+    foreign key (id_depredador)references especies(id_especie),
+    foreign key (id_ecorregion)references ecorregiones(id_ecorregion),
+    foreign key (id_ecosistema)references ecosistemas(id_ecosistema),
+    foreign key (id_habitat)references habitats(id_habitat),
+    foreign key (id_amenazas)references amenazas(id_amenaza),
+    foreign key (id_ley)references legislaciones(id_legislacion),
+    foreign key (id_proyecto)references proyectos(id_proyecto),
+    foreign key (id_organizacion)references organizaciones(id_organizacion),
+    foreign key (id_area_protegida)references areas_protegidas(id_area),
+    foreign key (id_noticia)references noticias(id_noticia),
+    foreign key (id_grafico)references graficos(id_grafico),
+)
 go
 
 
@@ -789,3 +820,7 @@ values(001,003,'Medio',N'La amenaza impacta moderadamente en la especie, afectan
       (002,003,'Alto',N'El cambio climático representa una amenaza de alto impacto para el Cóndor Andino. Este fenómeno global está alterando los patrones climáticos en la región habitada por el cóndor, afectando su hábitat y disponibilidad de alimentos. La variabilidad climática puede llevar a la escasez de recursos, dificultando la reproducción y supervivencia de la especie. La necesidad urgente de estrategias de adaptación y mitigación se hace evidente para garantizar la conservación a largo plazo del Cóndor Andino frente a los desafíos del cambio climático.'),
       (010,004,'Alto',N'La caza furtiva representa una amenaza de alto impacto para el Cortarramas Peruano. Este ave, endémica de la región, es objeto de persecución ilegal, poniendo en riesgo su población y biodiversidad. La caza furtiva afecta negativamente su capacidad de reproducción, dinámica social y supervivencia. La aplicación rigurosa de leyes contra la caza ilegal y la promoción de la conservación de su hábitat son esenciales para garantizar la preservación a largo plazo del Cortarramas Peruano.'),
       (003,009,'ALto',N'La contaminación lumínica presenta un alto impacto en el Gato Montés. Este felino, adaptado a entornos nocturnos, se ve afectado por la alteración de su hábitat natural debido a luces artificiales. La exposición a la contaminación lumínica puede tener consecuencias en su comportamiento, caza y reproducción. Estrategias para reducir la contaminación lumínica son cruciales para preservar la salud y el equilibrio ecológico de esta especie.')
+
+--Actualizaciones
+insert into gestion_actualizaciones(fecha, descripcion, id_especie, id_depredador, id_ecorregion, id_ecosistema, id_habitat, id_amenazas, id_ley, id_proyecto, id_organizacion, id_area_protegida, id_noticia, id_grafico)
+VALUES(getdate(),N'Actualizacion de todos los datos',001.002,001,001,001,001,001,30407,001,001,001,001,001)

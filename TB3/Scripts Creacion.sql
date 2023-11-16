@@ -1,6 +1,7 @@
-create database WILD4
+-- >>>>>>>>>>>>>>SCRIPTS DE CREACION<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+create database WILDGUARD
 go
-use WILD4
+use WILDGUARD
 go
     --Table: encargados
     create table encargados(
@@ -246,7 +247,35 @@ CREATE TABLE especies_amenazas(
     FOREIGN KEY (id_especie) REFERENCES especies(id_especie),
     Foreign Key (id_amenaza)references amenazas(id_amenaza)
 );
+--Table: gestion_actualizaciones
+create table gestion_actualizaciones(
+    id int identity (1,1)not null,
+    fecha date not null,
+    descripcion text not null,
+    id_especie int ,
+    id_depredador int,
+    id_ecorregion int,
+    id_ecosistema int,
+    id_habitat int,
+    id_amenazas int,
+    id_ley int,
+    id_proyecto int,
+    id_organizacion int,
+    id_area_protegida int,
+    id_noticia int,
+    id_grafico int,
+    primary key (id),
+    foreign key (id_especie)references especies(id_especie),
+    foreign key (id_depredador)references especies(id_especie),
+    foreign key (id_ecorregion)references ecorregiones(id_ecorregion),
+    foreign key (id_ecosistema)references ecosistemas(id_ecosistema),
+    foreign key (id_habitat)references habitats(id_habitat),
+    foreign key (id_amenazas)references amenazas(id_amenaza),
+    foreign key (id_ley)references legislaciones(id_legislacion),
+    foreign key (id_proyecto)references proyectos(id_proyecto),
+    foreign key (id_organizacion)references organizaciones(id_organizacion),
+    foreign key (id_area_protegida)references areas_protegidas(id_area),
+    foreign key (id_noticia)references noticias(id_noticia),
+    foreign key (id_grafico)references graficos(id_grafico),
+)
 go
-
-
-
